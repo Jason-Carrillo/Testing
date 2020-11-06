@@ -5,15 +5,15 @@ import com.mysql.cj.jdbc.Driver;
 public class Demo {
     public static void main(String[] args) throws SQLException {
         long idToUpdate = 0;
-
+        Config config = new Config();
         Album album = new Album();
 
         try {
             DriverManager.registerDriver(new Driver());
             Connection connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/codeup_test_db?serverTimezone=UTC&useSSL=false",
-                    "root",
-                    "codeup"
+                    config.getUrl(),
+                    config.getUser(),
+                    config.getPassword()
             );
 
             Statement statement = connection.createStatement();
